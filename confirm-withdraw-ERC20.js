@@ -1,7 +1,8 @@
 const Matic = require('@maticnetwork/maticjs').default
 const config = require('./config')
-const token = config.ROPSTEN_TEST_TOKEN // test token address
 const from = config.FROM_ADDRESS // from address
+
+var transactionHash = '0xec57bf36102a3bb9eee1bddf965052c022e5514301827e726f360515aea4d9b1' // Insert txHash generated from initiate-withdraw.js 
 
 // Create object of Matic
 const matic = new Matic({
@@ -13,17 +14,11 @@ const matic = new Matic({
     registry: config.REGISTRY,
 })
 
-const amount = '1000000000000000000' // amount in wei
-
-async function execute() {
-    await matic.initialize()
+matic.initialize().then(() => {
     matic.setWallet(config.PRIVATE_KEY)
-    await matic.approveERC20TokensForDeposit(token, amount, { from, gasPrice: '10000000000' })
-    return matic.depositERC20ForUser(token, from, amount, { from, gasPrice: '10000000000' })
-}
-
-execute().then(res => {
-    console.log(res)
-}).catch(err => {
-    console.log(err)
+    matic.withdraw(transactionHash, {
+        from,
+    }).then((res) => {
+        console.log(res) // eslint-disable-line
+    })
 })

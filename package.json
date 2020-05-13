@@ -3,15 +3,22 @@
   "version": "1.0.0",
   "description": "",
   "main": "config.js",
-  "dependencies": {
-    "maticjs": "^1.0.1",
-    "web3": "^1.2.7"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rahuldamodar94/learnmatic.git"
+  },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rahuldamodar94/learnmatic/issues"
+  },
+  "homepage": "https://github.com/rahuldamodar94/learnmatic#readme",
+  "dependencies": {
+    "@maticnetwork/maticjs": "^2.0.0-beta.10",
+    "bandchain-helper-library": "0.0.5"
+  }
 }
