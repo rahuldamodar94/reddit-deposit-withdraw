@@ -12,17 +12,13 @@ const matic = new Matic({
     registry: config.REGISTRY,
 })
 
-const recipient = '0x28e9E72DbF7ADee19B5279C23E40a1b0b35C2B90'
-
-const token = config.MUMBAI_ERC20 // test token address
-const amount = '1000000000000000000' // amount in wei
+var transactionHash = '0x6d391453fb02ce833c4444a8599813069e1d75258397171068cda95f6d624eb4'
 
 matic.initialize().then(() => {
     matic.setWallet(config.PRIVATE_KEY)
-    matic.transferERC20Tokens(token, recipient, amount, {
+    matic.withdrawNFT(transactionHash, {
         from,
-        // parent: true
     }).then((res) => {
-        console.log("hash", res)
+        console.log(res) // eslint-disable-line
     })
 })

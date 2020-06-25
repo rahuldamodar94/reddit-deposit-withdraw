@@ -1,6 +1,8 @@
 const Matic = require('@maticnetwork/maticjs').default
-const config = require('./config')
-const token = config.ROPSTEN_TEST_TOKEN // test token address
+const config = require('./config.json')
+
+// console.log(config)
+
 const from = config.FROM_ADDRESS // from address
 
 // Create object of Matic
@@ -13,6 +15,7 @@ const matic = new Matic({
     registry: config.REGISTRY,
 })
 
+const token = config.GOERLI_ERC20 // ERC20 token address
 const amount = '1000000000000000000' // amount in wei
 
 async function execute() {

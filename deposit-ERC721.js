@@ -1,5 +1,7 @@
 const Matic = require('@maticnetwork/maticjs').default
-const config = require('./config')
+const config = require('./config.json')
+
+// console.log(config)
 const from = config.FROM_ADDRESS // from address
 
 // Create object of Matic
@@ -12,17 +14,18 @@ const matic = new Matic({
     registry: config.REGISTRY,
 })
 
-const recipient = '0x28e9E72DbF7ADee19B5279C23E40a1b0b35C2B90'
+const token = config.GOERLI_ERC721 // ERC721 token address
+const tokenId = '2' // amount in wei
 
-const token = config.MUMBAI_ERC20 // test token address
-const amount = '1000000000000000000' // amount in wei
-
-matic.initialize().then(() => {
+async function execute() {
+    await matic.initialize()
     matic.setWallet(config.PRIVATE_KEY)
-    matic.transferERC20Tokens(token, recipient, amount, {
-        from,
-        // parent: true
-    }).then((res) => {
-        console.log("hash", res)
-    })
+    let response = await matic.safeDepositERC721Tokens(token,tokenId,{ from, gasPrice: '10000000000' })
+    return response;
+}
+
+execute().then(res => {
+    console.log(res)
+}).catch(err => {
+    console.log(err)
 })

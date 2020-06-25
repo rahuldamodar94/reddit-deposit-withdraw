@@ -1,5 +1,6 @@
 const Matic = require('@maticnetwork/maticjs').default
 const config = require('./config')
+
 const from = config.FROM_ADDRESS // from address
 
 // Create object of Matic
@@ -12,17 +13,13 @@ const matic = new Matic({
     registry: config.REGISTRY,
 })
 
-const recipient = '0x28e9E72DbF7ADee19B5279C23E40a1b0b35C2B90'
-
-const token = config.MUMBAI_ERC20 // test token address
-const amount = '1000000000000000000' // amount in wei
+const rootTokenAddress = config.ROPSTEN_TEST_TOKEN // Root token address
 
 matic.initialize().then(() => {
     matic.setWallet(config.PRIVATE_KEY)
-    matic.transferERC20Tokens(token, recipient, amount, {
+    matic.processExits(rootTokenAddress, {
         from,
-        // parent: true
     }).then((res) => {
-        console.log("hash", res)
+        console.log(res) // eslint-disable-line
     })
 })

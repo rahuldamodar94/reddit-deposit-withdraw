@@ -3,9 +3,6 @@ const Matic = require('@maticnetwork/maticjs').default
 
 const config = require('./config')
 
-const token = config.MATIC_TEST_TOKEN // test token address
-const amount = '1000000000000000000'
-
 const from = config.FROM_ADDRESS // from address
 
 // Create object of Matic
@@ -17,6 +14,9 @@ const matic = new Matic({
     depositManager: config.DEPOSITMANAGER_ADDRESS,
     registry: config.REGISTRY,
 })
+
+const token = config.MUMBAI_ERC20 // test token address
+const amount = '1000000000000000000'
 
 matic.initialize().then(() => {
     matic.setWallet(config.PRIVATE_KEY)
