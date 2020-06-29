@@ -13,7 +13,8 @@ const matic = new Matic({
     registry: config.REGISTRY,
 })
 
-const rootTokenAddress = config.ROPSTEN_TEST_TOKEN // Root token address
+// const rootTokenAddress = config.GOERLI_ERC20 // Root ERC721 token address
+const rootTokenAddress = config.GOERLI_ERC20 // Root ERC20 token address
 
 matic.initialize().then(() => {
     matic.setWallet(config.PRIVATE_KEY)

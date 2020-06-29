@@ -12,7 +12,7 @@ const matic = new Matic({
     registry: config.REGISTRY,
 })
 
-var transactionHash = '0x6d391453fb02ce833c4444a8599813069e1d75258397171068cda95f6d624eb4'
+var transactionHash = 'transactionHash from initiate withdraw'
 
 matic.initialize().then(() => {
     matic.setWallet(config.PRIVATE_KEY)
