@@ -18,7 +18,6 @@
   },
   "homepage": "https://github.com/rahuldamodar94/learnmatic#readme",
   "dependencies": {
-    "@maticnetwork/maticjs": "^2.0.0-beta.10",
-    "bandchain-helper-library": "0.0.5"
+    "@maticnetwork/maticjs": "^2.0.0-beta.12"
   }
 }
