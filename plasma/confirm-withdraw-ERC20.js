@@ -12,12 +12,13 @@ const matic = new Matic({
   registry: config.REGISTRY,
 });
 
-var transactionHash = "transactionHash from initiate withdraw"; // Insert txHash generated from initiate-withdraw.js
+var transactionHash =
+  "0xe7faa8c772f248e7b55e2a1a22c5127498151a3f3008395f01c95a25e707856f"; // Insert txHash generated from initiate-withdraw.js
 
 matic.initialize().then(() => {
   matic.setWallet(config.PRIVATE_KEY);
   matic
-    .withdraw(transactionHash, {
+    .withdrawRedditToken(transactionHash, {
       from,
     })
     .then((res) => {

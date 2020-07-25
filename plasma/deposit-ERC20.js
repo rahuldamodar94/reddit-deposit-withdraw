@@ -16,7 +16,7 @@ const matic = new Matic({
 });
 
 const token = config.GOERLI_ERC20; // ERC20 token address
-const amount = "1000000000000000000"; // amount in wei
+const amount = "10000000000000000000"; // amount in wei
 
 async function execute() {
   await matic.initialize();
