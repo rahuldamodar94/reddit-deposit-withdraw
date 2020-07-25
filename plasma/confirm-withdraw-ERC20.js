@@ -18,7 +18,7 @@ var transactionHash =
 matic.initialize().then(() => {
   matic.setWallet(config.PRIVATE_KEY);
   matic
-    .withdrawRedditToken(transactionHash, {
+    .withdrawMintableERC20Token(transactionHash, predicate, {
       from,
     })
     .then((res) => {

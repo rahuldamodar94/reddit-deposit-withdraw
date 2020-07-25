@@ -20,7 +20,7 @@ const amount = "100";
 matic.initialize().then(() => {
   matic.setWallet(config.PRIVATE_KEY);
   matic
-    .startWithdrawReddit(token, amount, {
+    .startWithdrawMintalbeERC20(token, amount, {
       from,
     })
     .then((res) => {
