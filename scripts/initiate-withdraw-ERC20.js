@@ -20,8 +20,9 @@ const amount = "100";
 matic.initialize().then(() => {
   matic.setWallet(config.PRIVATE_KEY);
   matic
-    .startWithdrawMintalbeERC20(token, amount, {
+    .startWithdrawMintableERC20(token, amount, {
       from,
+      gasPrice: "10000000000",
     })
     .then((res) => {
       console.log(res); // eslint-disable-line

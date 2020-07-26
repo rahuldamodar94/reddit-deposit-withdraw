@@ -14,13 +14,14 @@ const matic = new Matic({
 });
 
 var transactionHash =
-  "0x07c2ccac1614d4519e7249a9a1bc1fe4cc906eaf3d8fc7d0754ff1c18263c0d8"; // Insert txHash generated from initiate-withdraw.js
+  "0xd250a8426a8ed9e9fbf3dcf5acfad7967dc0ecdc9bd4e2627bfd0e94353109f3"; // Insert txHash generated from initiate-withdraw.js
 
 matic.initialize().then(() => {
   matic.setWallet(config.PRIVATE_KEY);
   matic
     .withdrawMintableERC20Token(transactionHash, predicate, {
       from,
+      gasPrice: "10000000000",
     })
     .then((res) => {
       console.log(res); // eslint-disable-line
