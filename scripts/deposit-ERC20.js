@@ -1,7 +1,8 @@
 const Matic = require("@maticnetwork/maticjs").default;
-const config = require("./config.json");
+const config = require("../config.json");
 
 // console.log(config)
+
 const from = config.FROM_ADDRESS; // from address
 
 // Create object of Matic
@@ -14,16 +15,20 @@ const matic = new Matic({
   registry: config.REGISTRY,
 });
 
-const amount = "10000000000000000"; // amount in wei
+const token = config.GOERLI_ERC20; // ERC20 token address
+const amount = "100"; // amount in wei
 
 async function execute() {
   await matic.initialize();
   matic.setWallet(config.PRIVATE_KEY);
-  let response = await matic.depositEther(amount, {
+  await matic.approveERC20TokensForDeposit(token, amount, {
     from,
     gasPrice: "10000000000",
   });
-  return response;
+  return matic.depositERC20ForUser(token, from, amount, {
+    from,
+    gasPrice: "10000000000",
+  });
 }
 
 execute()

@@ -1,6 +1,7 @@
 const Matic = require("@maticnetwork/maticjs").default;
-const config = require("./config");
+const config = require("../config");
 const from = config.FROM_ADDRESS; // from address
+const predicate = config.MINTABLE_PREDICATE;
 
 // Create object of Matic
 const matic = new Matic({
@@ -12,19 +13,19 @@ const matic = new Matic({
   registry: config.REGISTRY,
 });
 
-const recipient = "0x28e9E72DbF7ADee19B5279C23E40a1b0b35C2B90";
-
-const token = config.MUMBAI_ERC721; // test token address
-const tokenId = "1"; // NFT token Id
+var transactionHash =
+  "0x07c2ccac1614d4519e7249a9a1bc1fe4cc906eaf3d8fc7d0754ff1c18263c0d8"; // Insert txHash generated from initiate-withdraw.js
 
 matic.initialize().then(() => {
   matic.setWallet(config.PRIVATE_KEY);
   matic
-    .transferERC721Tokens(token, recipient, tokenId, {
+    .withdrawMintableERC20Token(transactionHash, predicate, {
       from,
-      // parent: true
     })
     .then((res) => {
-      console.log("hash", res);
+      console.log(res); // eslint-disable-line
+    })
+    .catch((err) => {
+      console.log(err);
     });
 });

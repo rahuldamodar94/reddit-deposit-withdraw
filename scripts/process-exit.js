@@ -1,5 +1,5 @@
 const Matic = require("@maticnetwork/maticjs").default;
-const config = require("./config");
+const config = require("../config");
 
 const from = config.FROM_ADDRESS; // from address
 
